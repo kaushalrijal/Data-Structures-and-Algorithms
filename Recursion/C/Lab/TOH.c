@@ -4,12 +4,12 @@ int counter=0;
 
 void TOH(int n, char source, char dest, char temp){
     if(n==1){
-        // printf("Move %d from %c to %c\n", n, source, dest);
+        printf("Move %d from %c to %c\n", n, source, dest);
         ++counter;
         return;
     }
     TOH(n-1, source, temp, dest);
-    // printf("Move %d from %c to %c\n", n, source, dest);
+    printf("Move %d from %c to %c\n", n, source, dest);
     TOH(n-1, temp, dest, source);
     ++counter;
 }
