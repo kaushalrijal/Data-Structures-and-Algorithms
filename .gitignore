@@ -2,3 +2,4 @@
 /.vscode
 
 **.dsym
+.DS_Store
