@@ -1,3 +1,5 @@
+from collections import deque
+
 graph = {
     'A': ['B', 'C'],
     'B': ['A', 'C'],
@@ -7,21 +9,24 @@ graph = {
     'F': ['D', 'E']
 }
 
-def DFS(graph, start):
+def BFS(graph, start):
     visited = []
-    stack = []
-    stack.append(start)
-    while not len(stack) == 0:
-        temp = stack.pop()
+    queue = deque()
+
+    queue.append(start)
+    while not len(queue) == 0:
+        temp = queue.popleft()
         visited.append(temp)
+
         for node in graph[temp]:
-            if (not node in stack) and (not node in visited):
-                stack.append(node)
-            
+            if (not node in queue) and (not node in visited):
+                queue.append(node)
+        
     print("The order of traversal is:")
     traversal_order = start
     for item in visited[1:]:
-        traversal_order += f" -> {item}"
+        traversal_order += " -> " + item
+    
     print(traversal_order)
 
-DFS(graph, 'A')
+BFS(graph, 'A')
